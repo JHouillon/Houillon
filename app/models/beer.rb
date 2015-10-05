@@ -1,5 +1,8 @@
 class Beer < ActiveRecord::Base
 
+belongs_to :brewrie
+has_many :beers
+
 	def note=var
 		if var.to_i < 0
 			super 0

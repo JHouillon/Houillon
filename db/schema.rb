@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005065913) do
+ActiveRecord::Schema.define(version: 20151005140151) do
 
   create_table "beers", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "brewrie_id"
+  end
+
+  add_index "beers", ["brewrie_id"], name: "index_beers_on_brewrie_id"
+
+  create_table "brewries", force: true do |t|
+    t.string   "name"
+    t.date     "since"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
