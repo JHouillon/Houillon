@@ -1,0 +1,15 @@
+%h1
+	Listing notes
+
+%table
+	%thead
+		%tr
+			%th
+				Notes
+	%tbody
+		-@beers.each do |beer|
+			%tr
+				%td
+					= beer.note
+
+= link_to 'Back', beers_path
