@@ -1,16 +1,10 @@
 class Beer < ActiveRecord::Base
 
 belongs_to :brewrie
-has_many :beers
+has_many :notes
+has_many :beers_geeks, through: :notes
 
-	def note=var
-		if var.to_i < 0
-			super 0
-		elsif var.to_i >10
-			super 10
-		else
-			super var
-		end
-
+	def note
+		notes.map{|note| note.value}.sum / notes.size unless notes.empty?
 	end
 end

@@ -1,5 +1,6 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_beer_geek!, except: [:index,:show]
 
   # GET /beers
   # GET /beers.json
