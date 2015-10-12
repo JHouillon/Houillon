@@ -1,6 +1,6 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_beer_geek!, except: [:index,:show]
+  before_filter :authenticate_beer_geek!, except: [:index]
 
   # GET /beers
   # GET /beers.json
@@ -80,6 +80,6 @@ class BeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def beer_params
-      params.require(:beer).permit(:name, :description, :note)
+      params.require(:beer).permit(:name, :description, :note, :beer_geek, notes_attributes:[:value, :beer_geek_id, :id, :_destroy])
     end
 end

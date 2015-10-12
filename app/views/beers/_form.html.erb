@@ -20,6 +20,18 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :note %><br>
+    <%= f.number_field :note %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.fields_for :notes do |n| %>
+    <%= n.number_field :value %>
+    Delete: <%= n.check_box :_destroy%><br>
+    <%end%>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :beer_geek, value: current_beer_geek.id %>
   </div>
   <div class="actions">
     <%= f.submit %>
