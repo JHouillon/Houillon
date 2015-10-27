@@ -7,10 +7,6 @@
 	= @beer.description
 
 %p
-	%strong Note moyenne:
-	= @beer.note
-
-%p
 	%strong Notes:
 	-@beer.notes.each do |n|
 		= n.value
@@ -19,7 +15,7 @@
 	%strong Geek:
 	-@beer.notes.each do |note|
 		%br
-		="#{note.beer_geek.email} à ajouté la note #{note.value} à cette bière"
+		="#{note.beer_geek.email unless note.beer_geek.nil?} à ajouté la note #{note.value} à cette bière"
 
 = link_to 'Edit', edit_beer_path(@beer)
 |

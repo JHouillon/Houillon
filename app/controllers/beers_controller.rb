@@ -26,6 +26,7 @@ class BeersController < ApplicationController
   # GET /beers/new
   def new
     @beer = Beer.new
+    @beer.notes << Note.new
   end
 
   # GET /beers/1/edit
@@ -80,6 +81,6 @@ class BeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def beer_params
-      params.require(:beer).permit(:name, :description, :note, :beer_geek, notes_attributes:[:value, :beer_geek_id, :id, :_destroy])
+      params.require(:beer).permit(:name, :description, notes_attributes:[:value, :beer_geek_id, :id, :_destroy])
     end
 end
